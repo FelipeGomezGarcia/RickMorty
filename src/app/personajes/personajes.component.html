@@ -13,9 +13,15 @@
   crossorigin="anonymous"
 ></script>
 
-<div class="d-flex justify-content-between" *ngIf="personajes!=null; else espera">
-    <div class="flex-auto" *ngFor="let pers of personajes">
-      <app-cards personaje={{pers}}></app-cards>
+<div class="row m-2" *ngIf="personajes!=null; else espera">
+    <div class="col mb-2" *ngFor="let pers of personajes">
+      <div class="card" style="width: 18rem">
+        <img src={{pers.image}} class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{pers.name}}</h5>
+          <a href="#" class="btn btn-primary">See more</a>
+        </div>
+      </div>
     </div>
 </div>
 <ng-template #espera>

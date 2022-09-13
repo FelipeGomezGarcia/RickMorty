@@ -7,14 +7,14 @@ import { PersonajesComponent } from './personajes/personajes.component';
 import { AboutComponent } from './about/about.component';
 
 import{HttpClientModule} from '@angular/common/http';
-import { CardsComponent } from './cards/cards.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonajesComponent,
     AboutComponent,
-    CardsComponent
+    InicioComponent
   ],
   imports: [
     BrowserModule,
