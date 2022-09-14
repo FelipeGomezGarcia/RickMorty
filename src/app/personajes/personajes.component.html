@@ -14,12 +14,12 @@
 ></script>
 
 <div class="row m-2" *ngIf="personajes!=null; else espera">
-    <div class="col mb-2" *ngFor="let pers of personajes">
+    <div class="col mb-2" *ngFor="let pers of personajes; let i = index">
       <div class="card" style="width: 18rem">
         <img src={{pers.image}} class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{pers.name}}</h5>
-          <a href="#" class="btn btn-primary">See more</a>
+          <button class="btn btn-primary" [routerLink]="['info',pers.id]">See more</button>
         </div>
       </div>
     </div>
@@ -31,4 +31,3 @@
     </div>
   </div>
 </ng-template>
-
