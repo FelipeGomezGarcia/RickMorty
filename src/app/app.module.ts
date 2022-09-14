@@ -8,13 +8,15 @@ import { AboutComponent } from './about/about.component';
 
 import{HttpClientModule} from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonajesComponent,
     AboutComponent,
-    InicioComponent
+    InicioComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
