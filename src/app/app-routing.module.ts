@@ -4,8 +4,14 @@ import { AboutComponent } from './about/about.component';
 import { PersonajesComponent } from './personajes/personajes.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { InfoComponent } from "./info/info.component";
+import { AddPersonajeComponent } from './add-personaje/add-personaje.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
+  },
   {
     path: 'personajes',
     component: PersonajesComponent
@@ -15,12 +21,16 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: '',
+    path: 'inicio',
     component: InicioComponent
   },
   {
     path: 'personajes/info/:id',
     component: InfoComponent
+  },
+  {
+    path: 'personajes/add',
+    component: AddPersonajeComponent
   }
 ];
 

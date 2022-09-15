@@ -9,6 +9,8 @@ import { AboutComponent } from './about/about.component';
 import{HttpClientModule} from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
 import { InfoComponent } from './info/info.component';
+import { AddPersonajeComponent } from './add-personaje/add-personaje.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { InfoComponent } from './info/info.component';
     PersonajesComponent,
     AboutComponent,
     InicioComponent,
-    InfoComponent
+    InfoComponent,
+    AddPersonajeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
