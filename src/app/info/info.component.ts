@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatosService } from '../datos.service';
 import { Personaje } from '../models/personaje.model';
 import { PersonajeService } from '../services/personaje.service';
 

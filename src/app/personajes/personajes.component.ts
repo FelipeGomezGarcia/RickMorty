@@ -1,5 +1,4 @@
 import { Component} from '@angular/core';
-import { DatosService } from "../datos.service";
 import { Personaje } from '../models/personaje.model';
 import { PersonajeService } from '../services/personaje.service';
 
