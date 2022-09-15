@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Personaje } from '../models/personaje.model';
 
-const apiUrl = 'http://localhost:3000/characters'
+const apiUrl = 'https://faker-serve.herokuapp.com/characters'
 
 @Injectable({
   providedIn: 'root'
