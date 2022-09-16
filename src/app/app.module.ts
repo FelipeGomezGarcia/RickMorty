@@ -6,14 +6,15 @@ import { AppComponent } from './app.component';
 import { PersonajesComponent } from './personajes/personajes.component';
 import { AboutComponent } from './about/about.component';
 
-import{HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
 import { InfoComponent } from './info/info.component';
 import { AddPersonajeComponent } from './add-personaje/add-personaje.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,12 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

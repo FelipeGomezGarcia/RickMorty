@@ -11,13 +11,18 @@ export class ProfileComponent implements OnInit {
 
   currentUser:any;
   tokenView:any;
-  user:any
+  roles:any;
   constructor(private token: TokenStorageService,private authService: AuthService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.tokenView = this.token.getToken();
-    this.authService.getUser(this.currentUser).subscribe()
+
+    if (this.tokenView == null) {
+      this.tokenView = "NULL";
+    }else{
+      this.roles = this.token.getRoles();
+    }
 
   }
 

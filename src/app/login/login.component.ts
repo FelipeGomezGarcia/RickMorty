@@ -17,14 +17,14 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  roles:any = null;
 
   constructor(private authService: AuthService, private tokenStorageService: TokenStorageService,private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getUser().roles;
+      this.roles = this.tokenStorageService.getRoles();
     }
   }
 
@@ -33,12 +33,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username,password).subscribe(
       data => {
-        this.tokenStorageService.saveToken(data.token);
+        this.tokenStorageService.saveToken(data["token"]);
         this.tokenStorageService.saveUser(username);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorageService.getUser().role;
+        this.roles= this.tokenStorageService.getRoles();
         this.reloadPage();
       },
       err =>{

@@ -13,13 +13,19 @@ const httpOptions = {
 })
 export class AuthService {
 
+  user:any = null;
   constructor(private http:HttpClient) { }
 
   login(username: string,password:string):Observable<any>{
-    return this.http.post(AUTH_URL + 'login',{
-      username,
-      password
-    },httpOptions);
+
+    this.user = null;
+
+    this.user = {
+      "username": username,
+      "password": password
+    };
+
+    return this.http.post(AUTH_URL + 'login', JSON.stringify(this.user), { headers: { 'Content-Type': 'application/json'}});
   }
 
   register(username:string,password:string,email:string):Observable<any>{
@@ -31,6 +37,6 @@ export class AuthService {
   }
 
   getUser(username:string):Observable<any>{
-    return this.http.get(AUTH_URL + 'users/' + username,httpOptions);
+    return this.http.get(AUTH_URL + 'users/' + username);
   }
 }
