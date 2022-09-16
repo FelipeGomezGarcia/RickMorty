@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deploy
 
-[Rick y Morty](https://crud.d2x1av2papyzvv.amplifyapp.com/)
+[Rick y Morty](https://jwt.dst4yogydfomp.amplifyapp.com/)
 
 ## Development server
 
