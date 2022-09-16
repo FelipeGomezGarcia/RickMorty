@@ -32,22 +32,38 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="/" routerLink="inicio">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/personajes">Personajes</a>
+            <a class="nav-link" href="/personajes" routerLink="personajes">Personajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/personajes/add">Añadir</a>
+            <a class="nav-link" href="/personajes/add" routerLink="personajes/add" *ngIf="isLoggedIn">Añadir</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/about">About</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" [(ngModel)]="name">
-          <button class="btn btn-success" type="text" (click)="searchPersonaje()">Search</button>
+          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success" type="text">Search</button>
         </form>
+        <ul class="navbar-nav" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a href="/register" class="nav-link" routerLink="register">Sing Up</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link" routerLink="login">Login</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav" *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a href="/profile" class="nav-link" routerLink="profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

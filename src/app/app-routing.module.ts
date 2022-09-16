@@ -5,12 +5,27 @@ import { PersonajesComponent } from './personajes/personajes.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { InfoComponent } from "./info/info.component";
 import { AddPersonajeComponent } from './add-personaje/add-personaje.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'inicio',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: 'personajes',

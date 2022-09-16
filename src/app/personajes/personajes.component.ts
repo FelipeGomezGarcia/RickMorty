@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { Personaje } from '../models/personaje.model';
 import { PersonajeService } from '../services/personaje.service';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-personajes',
@@ -13,10 +14,17 @@ export class PersonajesComponent{
   currentPersonaje:Personaje={};
   currentIndex = -1;
   name = '';
+  isLoggedIn = false;
+  username?:string;
 
-  constructor(private datosService: PersonajeService) { }
+  constructor(private datosService: PersonajeService,private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(){
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.username = JSON.stringify(user);
+    }
     this.loadList();
   }
 
@@ -25,6 +33,7 @@ export class PersonajesComponent{
       results => {this.personajes = results
       }
     );
+
   }
 
   searchPersonaje():void{

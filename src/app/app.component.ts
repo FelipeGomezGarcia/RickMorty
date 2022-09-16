@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Personaje } from './models/personaje.model';
 import { PersonajeService } from './services/personaje.service';
+import { TokenStorageService } from './services/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +11,25 @@ import { PersonajeService } from './services/personaje.service';
 export class AppComponent {
   title = 'RickMorty';
 
-  personajes:any=null;
-  currentPersonaje:Personaje={};
-  currentIndex = -1;
-  name = '';
+  private role:string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username?:string;
 
-  constructor(private datosService: PersonajeService) { }
+  constructor(private tokenStorageService: TokenStorageService){}
 
-  searchPersonaje():void{
-    this.currentPersonaje = {};
-    this.currentIndex = -1;
+  ngOnInit():void{
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    this.datosService.findByName(this.name)
-    .subscribe(
-      data =>{
-        this.personajes = data;
-      },
-      error =>{
-        console.log(error);
-      }
-    )
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.role = user.role;
+      this.username = user.username;
+    }
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 }

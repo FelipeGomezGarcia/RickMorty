@@ -11,6 +11,9 @@ import { InicioComponent } from './inicio/inicio.component';
 import { InfoComponent } from './info/info.component';
 import { AddPersonajeComponent } from './add-personaje/add-personaje.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     InicioComponent,
     InfoComponent,
-    AddPersonajeComponent
+    AddPersonajeComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
